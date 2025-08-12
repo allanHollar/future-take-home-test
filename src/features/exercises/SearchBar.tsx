@@ -7,7 +7,7 @@ type SearchBarProps = {
 
 const SearchBar = ({ value, onChange }: SearchBarProps) => {
   return (
-    <div className="relative w-[400px]">
+    <div className="relative mb-3.5 w-[300px] md:w-[400px]">
       <MagnifyingGlassIcon className="top-1/2 left-3 absolute w-5 h-5 text-gray-500 -translate-y-1/2 pointer-events-none" />
 
       <input

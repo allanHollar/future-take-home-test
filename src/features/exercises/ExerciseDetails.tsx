@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import type { Exercise } from "./types";
 
 type Props = {
@@ -6,10 +5,6 @@ type Props = {
 };
 
 const ExerciseDetails = ({ exercise }: Props) => {
-  useEffect(() => {
-    console.log(exercise);
-  });
-
   const formText = (str: string | null | undefined): string => {
     if (!str) return "";
     return str
@@ -19,7 +14,7 @@ const ExerciseDetails = ({ exercise }: Props) => {
   };
 
   return (
-    <div className="w-2/3 p4">
+    <div className="flex flex-col p-4 w-full md:w-2/3">
       <div className="mt-4">
         <video
           src={exercise?.video?.url}
@@ -28,6 +23,7 @@ const ExerciseDetails = ({ exercise }: Props) => {
           className="bg-black mb-3.5 rounded-lg w-full aspect-video"
         />
       </div>
+
       <div className="bg-gray-100 p-3 pt-5 rounded-lg">
         <h2 className="mb-2 font-bold text-xl tracking-wide">
           {exercise?.name}

@@ -18,16 +18,12 @@ export default function Home() {
     }
   }, [data, selected]);
 
-  useEffect(() => {
-    console.log(selected);
-  }, [selected]);
-
   return (
     <div className="flex flex-col">
       <Header searchTerm={searchTerm} onSearchChange={setSearchTerm} />
 
-      <main className="flex flex-1 justify-center">
-        <div className="flex w-full max-w-7xl">
+      <main className="flex md:flex-row flex-col gap-4 md:gap-6 w-full max-w-7xl">
+        <div className="md:flex w-full max-w-7xl">
           <ExerciseBrowser
             searchTerm={searchTerm}
             onSelect={setSelected}
