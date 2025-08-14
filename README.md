@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# What’s implemented
 
-## Getting Started
+- Left pane: scrollable exercise list with live search (header search bar).
 
-First, run the development server:
+- Right pane: details view for the selected exercise (name, description, video, key attributes).
+
+- Sticky filter controls (collapsible dropdowns) for: Equipment Required, Muscle Groups, Movement Patterns
+
+- Filters are OR within a facet and AND across facets.
+
+#### Responsive layout:
+
+- Mobile: single column (list above details)
+
+- ≥ md: two columns (1/3 list, 2/3 details)
+
+## How to use
+
+Type in the Search field to filter by exercise name (case-insensitive).
+
+1. Expand filters and check options to narrow results:
+
+1. Within a facet, any checked option will match (OR).
+
+1. Across facets, an exercise must match all active facets (AND).
+
+1. Click an exercise name to view details and video.
+
+## Installation
+
+### Prerequisites
+
+- Node.js 18+ (LTS). If you use `nvm`:
+
+```bash
+nvm install 18
+nvm use 18
+```
+
+1. Clone the repo:
+
+````bash
+git clone https://github.com/allanHollar/future-take-home-test.git```
+cd future-take-home-test
+````
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Run the app (http://localhost:3000):
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech & choices
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js (App Router) + TypeScript
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Tailwind CSS for styling; Heroicons for small icons
 
-## Learn More
+- No UI frameworks or heavy component libraries (per instructions)
 
-To learn more about Next.js, take a look at the following resources:
+### State:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- useExercises hook for fetching and basic loading/error state
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Page owns selected exercise and searchTerm
 
-## Deploy on Vercel
+- ExerciseBrowser owns FilterState
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Filtering:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `buildFacets() compiles unique, sorted option lists from CSV fields (equipment_required, muscle_groups, movement_patterns)
+
+- Robust CSV parsing with trim, nullish handling, and case-insensitive de-dupe
+
+### Performance:
+
+- useMemo for facets and filtered results
+
+- Stable keys (`key={e.id}`)
+
+### Code style:
+
+- Arrow functions for components and hooks
+
+- Extracted types (Exercise, UseExercisesResult, FilterState, Facets)
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
