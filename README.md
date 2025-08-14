@@ -42,7 +42,7 @@ nvm use 18
 1. Clone the repo:
 
 ````bash
-git clone https://github.com/allanHollar/future-take-home-test.git```
+git clone https://github.com/allanHollar/future-take-home-test.git
 cd future-take-home-test
 ````
 
