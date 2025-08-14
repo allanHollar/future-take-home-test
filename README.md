@@ -1,5 +1,7 @@
 # What’s implemented
 
+[Live Example](https://future-take-home-test.vercel.app/)
+
 - Left pane: scrollable exercise list with live search (header search bar).
 
 - Right pane: details view for the selected exercise (name, description, video, key attributes).
