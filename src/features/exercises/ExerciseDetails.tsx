@@ -1,3 +1,4 @@
+import VideoPlayer from "@/components/VideoPlayer";
 import type { Exercise } from "./types";
 
 type Props = {
@@ -16,12 +17,7 @@ const ExerciseDetails = ({ exercise }: Props) => {
   return (
     <div className="flex flex-col p-4 w-full md:w-2/3">
       <div className="mt-4">
-        <video
-          src={exercise?.video?.url}
-          controls
-          playsInline
-          className="bg-black mb-3.5 rounded-lg w-full aspect-video"
-        />
+        <VideoPlayer url={exercise?.video?.url} />
       </div>
 
       <div className="bg-gray-100 p-3 pt-5 rounded-lg">
